@@ -1,0 +1,165 @@
+@mixin flexible () {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+body {
+	color: #626262;
+	font-family: "Playfair Display Regular" ,sans-serif
+}
+
+body, ul, p, h1, h2 {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	max-width: 100%;
+	min-width: 100%;
+}
+
+a {
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #b4ad9e;
+	font-family: "Ubuntu Light", sans-serif;
+}
+
+p {line-height: 1.95vw;}
+
+p, a, b {font-size: 1.15vw;}
+
+h1 {
+	font-size: 2.45vw;
+	font-weight: 500;
+}
+
+ul {list-style: none;}
+
+button, input {
+	background-color: transparent;
+	font-family: "Playfair Display Regular" ,sans-serif
+}
+
+header {
+	padding: 0px 6.2% 7.6% 6.2%;
+	.navbar {
+		padding: 6.46% 0% 6% 0%;
+		.navbar-logo {width: 11.2%;}
+		.navbar-nav {width: 50%;}
+		li a {font-family: "Playfair Display Regular" ,sans-serif}
+	}
+}
+
+.navbar, .navbar-nav, .links, .container {@include flexible ();}
+
+.navbar, .navbar-nav, .links {justify-content: space-between;}
+
+.container {
+	flex-direction: column;
+	padding: 0 156px;
+}
+
+.slider{
+	max-width: 100%;
+	min-width: 100%;
+
+	max-height: 100%;
+	min-height: 100%;
+
+	position: relative;
+}
+
+/* Картинка масштабируется по отношению к родительскому элементу: */
+.slider .item img {object-fit: cover;}
+
+/* Кнопки назад и вперёд: */
+.slider .previous, .slider .next {
+	/* Добавляет курсору иконку, когда тот оказывается над кнопкой: */
+	cursor: pointer;
+
+	/* Положение элемента задаётся относительно границ браузера: */
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+
+	/* Оформление самих кнопок: */
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+
+	/* Плавное появление фона при наведении курсора: */
+	transition: 0.6s ease;
+
+	/* Скругление границ: */
+	border-radius: 0 3px 3px 0;
+}
+
+.slider .next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+/* При наведении курсора на кнопки добавляем фон кнопок: */
+.slider .previous:hover, .slider .next:hover {background-color: rgba(0, 0, 0, 0.2);}
+
+/* Анимация слайдов: */
+.slider .item {
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+@keyframes fade {
+	/* Устанавливаем и изменяем степень прозрачности: */
+	from {
+		opacity: 0.4
+	}
+	to {
+		opacity: 1
+	}
+}
+
+footer {
+	background-color: #f0f0f0;
+	padding: 2.8% 0%;
+
+	.container {
+		padding: 0 77px;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.navbar-nav {
+		width: 19.75%;
+		padding-left: 6.58%;
+		li {
+			padding-left: 10px;
+			a {
+				font-family: "Playfair Display Regular" ,sans-serif;
+				color: black;
+				text-transform: none;
+			} 
+		}
+	} 
+
+	.links {
+		width: 13.2%;
+		.navbar-nav {width: 61.5%;}
+	}
+
+	img {
+		max-height: 100%;
+		min-height: 100%;
+	}
+}
+
+@import "home/home.scss";
+
+@import "photodiary/photodiary.scss";
+
+@import "single_post/single_post.scss";
+
+@import "fonts/fonts.scss";

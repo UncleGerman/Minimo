@@ -1,17 +1,31 @@
 .single_post_info {
+	padding-bottom: 9.5%;
+
 	.container {
 		flex-direction: row;
-		padding: 0px 6.2% 0px 156px;
+		padding: 0px 6.2% 0px 13%;
 	}
+
 	.post_info_collum {
 		width: 68%;
 
 		h1 {padding: 2.1% 0% 3% 0%;}
 
-		i {padding: 5.3% 3.1% 1.5% 3.1%;}
+		i {padding: 7.4% 3.1% 2.5% 3.1%;}
 
-		.links_container .links {width: 30.5%;}
+		.post_info_img {
+			padding-top: 7.45%;
+			img {padding-bottom: 8.1%;}
+		}
+
+		.post_info_img img:last-child {padding: 0;}
+
+		.links_container {
+			padding-top: 9%;
+			.links {width: 30.5%;}
+		} 
 	}
+
 	.post_info_sidebar {
 		position: sticky;
 		width: 30%;
@@ -27,16 +41,15 @@
 
 		.sidebar_info {
 			padding-left: 5.2%;
-			h2 {
-				padding: 6% 0% 2.5% 0%;
-				font-weight: 500;
-			}
+
+			h2 {padding: 6.5% 0% 2.5% 0%;}
 
 			p {
 				line-height: 1.69vw;
 				font-size: 0.975vw;
 			}
 		}
+
 		.sidebar_nav_container {
 			padding: 0% 0% 11.1% 6%;
 			.sidebar_nav {
@@ -46,18 +59,22 @@
 				li {
 					padding: 0% 0% 7.6% 4%;
 					color: #b4ad9e;
+
 					p {
 						color: #626262;
 						font-size: 1.3vw;
 					}
+					
 					a {font-size: 0.96vw;}
 				}
 			}
 		}
+
 		.links {
-			padding: 4.4% 0% 22% 3.8%;
-			.navbar-nav {width: 27%;}
+			padding: 4.4% 0% 23% 0.8%;
+			.navbar-nav {width: 29%;}
 		}
+
 		.sidebar_baner {
 			position: relative;
 			img {

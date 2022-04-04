@@ -5,6 +5,15 @@
 	align-items: center;
 }
 
+@mixin menu_btn () {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 0.35vw;
+	background-color: #000;
+	transition-duration: .25s;
+}
+
 body {
 	color: #626262;
 	font-family: "Playfair Display Regular" ,sans-serif
@@ -27,7 +36,14 @@ a {
 	font-family: "Ubuntu Light", sans-serif;
 }
 
+a:hover {color: #b4ad9ebf;}
+
 p {line-height: 1.95vw;}
+
+i {
+	font-size: 1.08vw;
+	line-height: 1.97vw;
+}
 
 p, a, b {font-size: 1.15vw;}
 
@@ -36,6 +52,8 @@ h1 {
 	font-weight: 500;
 }
 
+h2 {font-size: 1.9vw;}
+
 ul {list-style: none;}
 
 button, input {
@@ -43,116 +61,197 @@ button, input {
 	font-family: "Playfair Display Regular" ,sans-serif
 }
 
-header {
-	padding: 0px 6.2% 7.6% 6.2%;
-	.navbar {
-		padding: 6.46% 0% 6% 0%;
-		.navbar-logo {width: 11.2%;}
-		.navbar-nav {width: 50%;}
-		li a {font-family: "Playfair Display Regular" ,sans-serif}
-	}
-}
+/**/
+.navbar, 
+.navbar-nav, 
+.navbar-nav li, 
+.links {@include flexible ();}
 
-.navbar, .navbar-nav, .links, .container {@include flexible ();}
+.navbar, 
+.navbar-nav, 
+.links {justify-content: space-between;}
 
-.navbar, .navbar-nav, .links {justify-content: space-between;}
+.container {@include flexible ();}
 
 .container {
 	flex-direction: column;
-	padding: 0 156px;
+	padding: 0 13%;
 }
 
-.slider{
-	max-width: 100%;
-	min-width: 100%;
+header {
+	padding: 0px 6.2% 7.6% 6.2%;
 
-	max-height: 100%;
-	min-height: 100%;
+	.navbar {
+		padding: 6.46% 0% 6% 0%;
 
-	position: relative;
-}
+		.navbar-logo {width: 11.2%;}
 
-/* Картинка масштабируется по отношению к родительскому элементу: */
-.slider .item img {object-fit: cover;}
+		.navbar-nav {width: 50%;}
 
-/* Кнопки назад и вперёд: */
-.slider .previous, .slider .next {
-	/* Добавляет курсору иконку, когда тот оказывается над кнопкой: */
-	cursor: pointer;
+		li a {font-family: "Playfair Display Regular" ,sans-serif}
 
-	/* Положение элемента задаётся относительно границ браузера: */
-	position: absolute;
-	top: 50%;
-	width: auto;
-	margin-top: -22px;
-	padding: 16px;
+		.burger_menu,
+		.burger_menu .menu_btn,
+		#menu_toggle:checked ~ .top_nav, 
+		.top_nav nav, 
+		.top_nav ul {@include flexible ();}
 
-	/* Оформление самих кнопок: */
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
+		.burger_menu,
+		.burger_menu #menu_toggle:checked ~ .menu_btn > span {width: 2.5%;}
 
-	/* Плавное появление фона при наведении курсора: */
-	transition: 0.6s ease;
+		.burger_menu {
+			position: relative;
+			#menu_toggle {opacity: 0;}
 
-	/* Скругление границ: */
-	border-radius: 0 3px 3px 0;
-}
+			#menu_toggle:checked ~ .menu_btn > span {
+				transform: rotate(45deg);
+				background-color: transparent;
+				transition: all 0s ease-in-out;
+			}
 
-.slider .next {
-	right: 0;
-	border-radius: 3px 0 0 3px;
-}
+			#menu_toggle:checked ~ .menu_btn > span::before,
+			#menu_toggle:checked ~ .menu_btn > span::after {top: 0;}
 
-/* При наведении курсора на кнопки добавляем фон кнопок: */
-.slider .previous:hover, .slider .next:hover {background-color: rgba(0, 0, 0, 0.2);}
+			#menu_toggle:checked ~ .menu_btn > span::before {transform: rotate(0);}
 
-/* Анимация слайдов: */
-.slider .item {
-	animation-name: fade;
-	animation-duration: 1.5s;
-}
-@keyframes fade {
-	/* Устанавливаем и изменяем степень прозрачности: */
-	from {
-		opacity: 0.4
+			#menu_toggle:checked ~ .menu_btn > span::after {transform: rotate(90deg);}
+
+			#menu_toggle:checked ~ .top_nav,
+			#menu_toggle:checked ~ .top_nav .mobile_nav {height: 100%;}
+
+			#menu_toggle:checked ~ .top_nav {
+				z-index: 1;
+				justify-content: flex-end;
+				left: 0;
+				bottom: 0;
+
+				.mobile_nav, .navbar-nav {flex-direction: column;}
+
+				.mobile_nav {
+					width: 20%;
+					background: antiquewhite;
+
+					.navbar-nav {
+						height: 50%;
+						justify-content: space-evenly;
+					}
+
+					.links .navbar-nav {flex-direction: row;}
+				}
+
+				.mobile_nav .links, 
+				.navbar-logo {width: 50%;}
+			}
+
+			.top_nav {display: none; }
+
+			#menu_toggle:checked ~ .top_nav,
+			#menu_toggle:checked ~ .menu_btn {position: fixed;}
+
+			#menu_toggle:checked ~ .menu_btn {margin-left: 10%;}
+
+			#menu_toggle:checked ~ .top_nav,
+			.menu_btn {width: 100%;}
+
+			.menu_btn {
+				position: absolute;
+				display: none;
+				cursor: pointer;
+				z-index: 2;
+
+				span, span::before, span::after {@include menu_btn ();}
+
+				span::before, span::after {content: '';}
+
+				span::before {top: -0.8vw;}
+
+				span::after {top: 0.8vw;}
+			}
+		}
 	}
-	to {
-		opacity: 1
+
+	.slider{
+		position: relative;
+		max-width: 100%;
+		min-width: 100%;
+		max-height: 100%;
+		min-height: 100%;
+
+		.item {
+			animation-name: fade;
+			animation-duration: 1.5s;
+			img {object-fit: cover;}
+		} 
+
+		.previous, .next {
+			cursor: pointer;
+			position: absolute;
+			top: 50%;
+			width: auto;
+			margin-top: -5%;
+			padding: 2%;
+			color: white;
+			font-weight: bold;
+			font-size: 3.5vw;
+			transition: 0.6s ease;
+			border-radius: 0 0.3vw 0.3vw 0;
+		}
+
+		.next {
+			right: 0;
+			border-radius: 0.3vw 0 0 0.3vw;
+		}
+
+		.previous:hover, .next:hover {background-color: rgba(0, 0, 0, 0.2);}
+	}
+
+	@keyframes fade {
+		from {opacity: 0.4}
+		to {opacity: 1}
 	}
 }
+
+.links .navbar-nav {
+	li {padding-left: 11%;}
+	img {
+		max-width: 100%;
+		min-width: 100%;
+		max-height: 100%;
+		min-height: 100%;
+	}
+}
+
 
 footer {
 	background-color: #f0f0f0;
-	padding: 2.8% 0%;
+	padding: 3.1% 0% 3.2% 0%;
 
 	.container {
-		padding: 0 77px;
+		padding: 0 6.35%;
 		flex-direction: row;
 		justify-content: space-between;
 	}
 
 	.navbar-nav {
 		width: 19.75%;
-		padding-left: 6.58%;
+		padding-left: 7.5%;
 		li {
-			padding-left: 10px;
+			padding: 0;
 			a {
 				font-family: "Playfair Display Regular" ,sans-serif;
 				color: black;
 				text-transform: none;
 			} 
 		}
+		li:hover {border-bottom: 0.1vw solid #b4ad9e;}
 	} 
 
 	.links {
 		width: 13.2%;
-		.navbar-nav {width: 61.5%;}
-	}
-
-	img {
-		max-height: 100%;
-		min-height: 100%;
+		.navbar-nav {
+			width: 61.5%;
+			li:hover {border:none;}
+		}
 	}
 }
 
@@ -161,5 +260,7 @@ footer {
 @import "photodiary/photodiary.scss";
 
 @import "single_post/single_post.scss";
+
+@import "media.scss";
 
 @import "fonts/fonts.scss";

@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-<header>
+	<header>
 		<nav class="navbar">
 			<a class="navbar-logo" href="index.html"><img src="img/logo.png" alt="logo"></a>
 			<ul class="navbar-nav">
@@ -15,6 +15,31 @@
 				<li><a href="#" target="_blank">music</a></li>
 				<li><a href="#" target="_blank">travel</a></li>
 			</ul>
+			<div class="burger_menu">
+				<input id="menu_toggle" type="checkbox"/>
+				<label class="menu_btn" id="close" for="menu_toggle">
+					<span></span>
+				</label>
+				<div class='top_nav' id="top-nav">
+					<nav class="mobile_nav">
+						<a class="navbar-logo" href="index.html"><img src="img/logo.png" alt="logo"></a>
+						<ul class="navbar-nav">
+							<li><a href="#" target="_blank">lifestyle</a></li>
+							<li><a href="photodiary.html" target="_blank">photodiary</a></li>
+							<li><a href="#" target="_blank">music</a></li>
+							<li><a href="#" target="_blank">travel</a></li>
+						</ul>
+						<div class="links">
+							<p>Follow</p>
+							<ul class="navbar-nav">
+								<li><a href="#" target="_blank"><img src="img/facebook.png" alt="facebook"></a></li>
+								<li><a href="#" target="_blank"><img src="img/twitter.png" alt="twitter"></a></li>
+								<li><a href="#" target="_blank"><img src="img/instagram.png" alt="instagram"></a></li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
 		</nav>
 		<div class="slider">
 			<div class="item"><img src="img/home/slider_item_1.jpg" alt="slider item 1"></div>
@@ -77,7 +102,7 @@
 		</section>
 		<section class="newsletter">
 			<h1>Sign up for our newsletter!</h1>
-			<form>
+			<form id="forms">
 				<input type="email" name="email" value="Enter a valid email address">
 				<button type="submit">
 					<img src="img/home/newslatter_send_button.png">
@@ -104,7 +129,7 @@
 						</p>
 					</div>
 				</div>
-				<button>Load more</button>
+				<form action="#" target="_blank"><button>Load more</button></form>
 			</div>
 		</section>
 	</content>

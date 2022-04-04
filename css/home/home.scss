@@ -13,21 +13,27 @@
 
 	p {padding: 1.15% 0% 5% 0%;}
 
-	.container {align-items: flex-start;}
+	.container {
+		align-items: flex-start;
+		padding: 0px 12.8%;
+	}
 }
 
 .posts {
 	padding-bottom: 9.78%;
-	
-	.container {padding: 0 125px;}
+
+	.container {padding: 0 10.4%;}
 
 	.posts_row {
 		@include flexible ();
+		align-items: flex-start;
 		padding: 0.02% 0% 13.35% 0%;
 
 		.posts_item {
 			padding: 0 3.17%;
+
 			img {padding-bottom: 5.4%;}
+
 			h1 {padding: 3.4% 0% 6.1% 0%;}
 		}
 	}
@@ -38,29 +44,37 @@
 
 .newsletter {
 	flex-direction: column;
-	padding: 5.2% 0 6.1% 0%;
+	padding: 5.2% 33.4% 6.1% 33.7%;
 	background-color: #f0f0f0;
 
 	h1 {
-		padding-bottom: 6.25%;
-		font-size: 2.6vw;
+		padding: 0.5% 1.5% 19.1% 0%;
+		font-size: 2.58vw;
 	}
 
-	form { 
-		border-bottom: 1px solid black;
-		width: 32.6%;
-		padding-bottom: 0.6%;
+	form, form input {width: 100%;}
 
-		input, button, input:focus {border: none;}
+	form { 
+		border-bottom: 0.1vw solid black;
+		padding-bottom: 1.3%;
+
+		input, button {border: none;}
 
 		input {
+			padding: 0% 0% 0% 0.6%;
 			font-size: 1.13vw;
-			width: 100%;
 		}
 
+		input:focus {outline:0;}
+
 		button {
-			margin: 1.2% 0% 0% 5%;
-			padding: 0%;
+			display: flex;
+			padding: 0;
+			width: 9%;
+			img {
+				box-sizing: border-box;
+				padding-top: 15%;
+			}
 		}
 	}
 }
@@ -72,13 +86,22 @@
 
 	.posts_row {padding-bottom: 16.6%;}
 
-	.posts_row .posts_item h1 {padding: 3.7% 0% 6.5% 0%;}
+	.posts_row .posts_item {
+		h1 {padding: 3.7% 0% 6.5% 0%;}
+		img {padding-bottom: 5.6%;}
+	} 
 
-	button {
-		margin-right: 0.4%;
-		padding: 1.6% 3.22%;
-		font-size: 1.68vw;
-		color: gray;
-		border: 1px solid black;
+	form {
+		width: 17.2%;
+		margin-right: 0.3%;
+		button {
+			cursor: pointer;
+			padding: 9.25% 18.6%;
+			font-size: 1.68vw;
+			color: gray;
+			border: 0.1vw solid black;
+		}
 	}
+
+	form:hover button {color: #b4ad9ebf;}
 }
